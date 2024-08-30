@@ -11,7 +11,7 @@ const Navbar = () => {
       </div>
       <nav className='flex items-center gap-5'>
         { NavLinks.map( ( link, i ) => (
-          <CustomLink key={ i } href={ link.href } className={ `py-1 px-1 relative before:transition-[transform] before:origin-right hover:before:origin-left before:duration-300 before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1.3px] before:bg-button before:-z-10 before:scale-x-0 hover:before:scale-x-100` } active={ "before:!scale-100" }>{ link.label }</CustomLink>
+          <CustomLink key={ i } href={ link.href } className={ `py-1 px-1 relative before:transition-[transform] before:origin-right hover:before:origin-left before:duration-300 before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1.3px] before:bg-foreground before:-z-10 before:scale-x-0 hover:before:scale-x-100` } active={ "before:!scale-100" }>{ link.label }</CustomLink>
         ) ) }
       </nav>
       <div className='tools flex items-center justify-center gap-8'>
