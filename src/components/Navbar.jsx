@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   return (
-    <header className='w-screen fixed flex items-center px-8 py-4 justify-between text-sm font-[Alata] bg-background'>
+    <header className='w-screen fixed flex items-center px-8 py-4 justify-between text-sm font-[Alata] bg-background z-50'>
       <div className="logo w-20 h-8">
         <p className="logo text-lg font-bold">AMULER</p>
       </div>
@@ -20,7 +20,7 @@ const Navbar = () => {
         </div>
         <div className='search flex gap-1 items-center'>
           <Search className='text-foreground' />
-          <input type="text" className='p-1 bg-none border-0 w-full md:w-14 outline-none text-sm transition-all duration-250 placeholder:text-foreground md:focus:w-[200px] border-border focus:border-b' placeholder='Search' />
+          <input type="text" className='p-1 bg-background border-0 w-full md:w-14 outline-none text-sm transition-all duration-250 placeholder:text-foreground md:focus:w-[200px] border-border focus:border-b' placeholder='Search' />
         </div>
         <div className='hidden md:flex login gap-2 items-center'>
           <UserRound className='text-foreground' />

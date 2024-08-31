@@ -3,6 +3,7 @@ import ThemeContext from "@/contexts/ThemeContext";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
+import ChildLayout from "./ChildLayout";
 
 const inter = Inter( { subsets: [ "latin" ] } );
 
@@ -22,7 +23,9 @@ export default function RootLayout ( { children } ) {
           enableSystem
         >
           <Navbar />
-          { children }
+          <ChildLayout>
+            { children }
+          </ChildLayout>
         </ThemeContext>
       </body>
     </html>

@@ -1,12 +1,32 @@
+"use client";
+
+import CardsContainer from "@/components/CardsContainer";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function Home () {
 
+  const variants = {
+    initial: {
+      y: -10,
+      opacity: 0
+    },
+    animate: {
+      y: 0,
+      opacity: 1
+    },
+    exit: {
+      y: 5,
+      opacity: 0
+    }
+  };
+
   return (
-    <main className="font-[Alata] flex h-full min-h-screen w-screen flex-col ">
-      <h1 className="hidden md:block fixed z-0 tracking-tight md:text-[10rem] -left-36 opacity-10 top-[calc(50%+25px)] -translate-y-1/2  rotate-90">Fashion</h1>
+    <motion.main className="font-[Alata] flex h-full min-h-screen w-screen flex-col" variants={ variants } initial="initial" animate="animate" exit={ "exit" }>
+      <h1 className="hidden select-none md:block fixed z-0 tracking-tight md:text-[10rem] -left-36 opacity-10 top-[calc(50%+25px)] -translate-y-1/2  rotate-90">Fashion</h1>
 
       <div id="hero" className="flex justify-between w-screen min-h-[70vh] md:min-h-[95vh] bg-[linear-gradient(hsl(var(--background)/50%),hsl(var(--background)/75%)),url(/Imgs/hero-bg.jpg)] bg-center bg-cover bg-no-repeat bg-fixed">
 
@@ -19,18 +39,18 @@ export default function Home () {
 
       </div>
 
-      <div id="new-arrivals" className="w-screen relative z-[5] bg-background h-full p-10">
+      <div id="new-arrivals" className="w-screen relative z-[5] bg-background h-fit p-10 flex flex-col gap-8">
 
         <h1 className="text-3xl font-bold text-center">New Arrivals</h1>
-        <div id="content">
+        <div id="content" className="w-full h-fit">
 
-
+          <CardsContainer />
 
         </div>
 
 
       </div>
 
-    </main>
+    </motion.main>
   );
 }
