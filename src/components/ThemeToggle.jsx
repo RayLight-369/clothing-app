@@ -2,7 +2,6 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,9 +9,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState, useEffect } from "react";
 
 export default function ThemeToggle () {
   const { setTheme } = useTheme();
+  const [ mounted, setMounted ] = useState( false );
+
+  // Prevent the page from re-rendering before the theme is mounted
+  useEffect( () => {
+    setMounted( true );
+  }, [] );
+
+  if ( !mounted ) return null;
 
   return (
     <DropdownMenu>

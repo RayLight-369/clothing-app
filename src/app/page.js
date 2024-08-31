@@ -38,18 +38,17 @@ export default function Home () {
 
       </motion.div>
 
-      <div id="new-arrivals" className="w-screen relative z-[5] bg-background h-fit p-10 flex flex-col gap-8">
+      <div id="new-arrivals" className="w-screen relative z-[5] bg-background h-fit px-10 py-16 flex flex-col gap-8">
 
         <div className="flex h-fit relative justify-center w-full before:absolute before:content-[''] before:z-[4] before:w-full before:h-[2px] before:bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)] before:left-0 before:top-1/2">
           <h1 className="text-3xl w-fit font-bold text-center bg-background z-10 relative px-2">New Arrivals</h1>
         </div>
+
         <div id="content" className="w-full h-fit">
-
           <CardsContainer />
-
         </div>
 
-        <hr className="block w-screen h-[2px] border-none outline-none bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)]" />
+        <hr className="mt-5 block w-screen h-[2px] border-none outline-none bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)]" />
       </div>
 
     </motion.main>
