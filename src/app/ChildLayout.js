@@ -9,7 +9,7 @@ const ChildLayout = ( { children } ) => {
     //   type: "just",
     //   staggerChildren
     // }}>
-    <AnimatePresence mode='wait' initial={ false }>
+    <AnimatePresence mode='wait'>
       { children }
     </AnimatePresence>
     // </MotionConfig>
