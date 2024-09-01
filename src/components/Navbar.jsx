@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   return (
-    <header className='w-screen fixed flex items-center px-8 py-4 justify-between text-sm font-[Alata] bg-background z-5'>
+    <header className='w-screen fixed flex items-center px-8 py-4 justify-between text-sm font-[Alata] bg-background z-[42]'>
       <div className="logo w-20 h-8">
         <p className="logo text-lg font-bold">AMULER</p>
       </div>

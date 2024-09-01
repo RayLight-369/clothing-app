@@ -59,10 +59,11 @@ import { ShoppingCart } from 'lucide-react';
 import { memo } from 'react';
 import { Button } from './ui/button';
 import { motion } from 'framer-motion';
-import ImageModal from './ImageModal'; // Import the modal component
+import { useConfig } from '@/contexts/Config';
 
 const Card = ( { i } ) => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
+  const { selectedImage, setSelectedImage } = useConfig();
 
   const variants = {
     initial: {
@@ -75,8 +76,9 @@ const Card = ( { i } ) => {
     },
   };
 
-  const handleImageClick = () => {
-    setIsModalOpen( true );
+  const handleImageClick = ( src ) => {
+    // setIsModalOpen( true );
+    setSelectedImage( src );
   };
 
   const closeModal = () => {
@@ -93,7 +95,7 @@ const Card = ( { i } ) => {
         <img
           src={ `/Imgs/${ i }.jpeg` }
           className="w-full h-full object-cover transition-[filter] rounded-md filter brightness-75 group-hover/card:filter-none cursor-pointer"
-          onClick={ handleImageClick }
+          onClick={ () => handleImageClick( `/Imgs/${ i }.jpeg` ) }
         />
         <div className="w-full flex justify-between items-start">
           <div className="content w-[80%] font-[Montserrat] font-medium flex flex-col relative">
@@ -109,7 +111,7 @@ const Card = ( { i } ) => {
       </motion.div>
 
       {/* Render the modal */ }
-      { isModalOpen && (
+      {/* { isModalOpen && (
         <>
           <motion.div
             className="fixed inset-0 bg-black/80 z-[52]"
@@ -119,7 +121,7 @@ const Card = ( { i } ) => {
           />
           <ImageModal isOpen={ isModalOpen } onClose={ closeModal } imgSrc={ `/Imgs/${ i }.jpeg` } />
         </>
-      ) }
+      ) } */}
     </>
   );
 };

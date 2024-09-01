@@ -20,9 +20,9 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    /* --button-bg: #C5773F; */
-    --foreground: 20 14.3% 4.1%;
+    --background: 0 0% 95%;
+    /* --button-bg: hsl(); */
+    --foreground: 30 12% 7%;
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
