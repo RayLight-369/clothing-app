@@ -27,7 +27,7 @@ const Modal = ( { children, handleClose, customClassName } ) => {
       onClick={ handleClose }
     >
       <motion.div
-        className={ `p-5 relative max-h-[90%] w-fit bg-white rounded-lg ${ customClassName }` }
+        className={ `p-2 md:p-5 relative max-h-[90%] w-fit bg-white rounded-lg ${ customClassName }` }
         variants={ variants }
         animate="animate"
         initial="hidden"
