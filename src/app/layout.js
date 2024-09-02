@@ -10,7 +10,7 @@ const inter = Inter( { subsets: [ "latin" ] } );
 
 
 export const metadata = {
-  title: "Amuler: A Clothing Brand.",
+  title: "Safar: A Clothing Brand.",
   description: "Everything you are looking for...",
 };
 
