@@ -34,7 +34,7 @@ export default function Home () {
 
           <motion.div className="hero-content flex flex-col w-full gap-9 justify-center items-center p-4 md:p-10" variants={ variants } transition={ { staggerChildren: 0.2 } }>
             <motion.h1 className="text-[2.75rem] md:text-8xl text-center leading-[1.1] w-full font-[Montserrat] font-black tracking-[0.0275rem] " variants={ variants }>Explore Your <span className="md:text-background text-foreground [text-shadow:0px_0px_18px_hsl(var(--foreground)/20%)] md:[text-shadow:0px_1px_0_hsl(var(--foreground)),0px_0px_20px_hsl(var(--foreground)/40%)]">Style</span></motion.h1>
-            <motion.p variants={ variants } className="text-[1.15rem] text-foreground md:text-opacity-100 md:text-foreground md:text-2xl text-center w-[97%] md:w-[77%] text-pretty">Elevate your wardrobe with clothes that shine, simple styles that make you feel fine. Dress to impress, every single time.</motion.p>
+            <motion.p variants={ variants } className="text-[1.15rem] font-[Alata] text-foreground md:text-[1.4rem] text-center w-[97%] md:w-[77%] text-pretty">Elevate your wardrobe with clothes that shine, simple styles that make you feel fine. Dress to impress, every single time.</motion.p>
             <Link href={ "/store" } className='no-underline text-left w-[200px] px-10 py-3 bg-foreground text-background hover:shadow-md overflow-hidden transition-all duration-[250ms] hover:px-5 hover:-skew-y-3 hover:-skew-x-3 rounded-full relative after:transition-all after:duration-200 after:content-["→"] after:absolute after:text-[24px] after:-right-10 after:text-background after:block after:top-1/2 after:-translate-y-1/2 hover:after:right-5'>Start Exploring</Link>
           </motion.div>
 

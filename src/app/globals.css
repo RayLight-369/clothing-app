@@ -12,6 +12,21 @@
   src: url("/Fonts/Alata.ttf");
 }
 
+@font-face {
+  font-family: Quicksand;
+  src: url("/Fonts/Quicksand.ttf");
+}
+
+@font-face {
+  font-family: AbeeZee;
+  src: url("/Fonts/ABeeZee.ttf");
+}
+
+@font-face {
+  font-family: Worksans;
+  src: url("/Fonts/WorkSans.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
