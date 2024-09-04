@@ -1,24 +1,16 @@
-"use client";
-
 import { NavLinks } from '@/lib/constants';
 import CustomLink from './CustomLink';
 import { Search, UserRound } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Image from "next/image";
-import { useState } from 'react';
 
 const Navbar = () => {
-
-  const [ src, setSrc ] = useState( "/logo1.png" );
 
   return (
     <header className='w-screen fixed flex items-center px-8 py-[10px] h-[80px] justify-between text-sm font-[Alata] bg-background z-[42]'>
       <div className="logo h-full flex items-center ">
         {/* <p className="logo text-lg font-bold">AMULER</p> */ }
-        <Image src={ src || "/logo1.png" } width={ 200 } height={ 120 } className={ "h-full w-auto" } onClick={ () => setSrc( prev => {
-          if ( prev.includes( "logo1" ) ) return "/logo2.png";
-          return "/logo1.png";
-        } ) } />
+        <Image src={ "/logo1.png" } width={ 200 } height={ 120 } className={ "h-full w-auto dark:invert" } />
       </div>
       <nav className='flex items-center gap-5'>
         { NavLinks.map( ( link, i ) => (
