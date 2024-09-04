@@ -27,7 +27,7 @@ export default function Home () {
 
   return (
     <>
-      <motion.main className="font-[Alata] overflow-x-hidden overflow-y-auto flex h-fit min-h-screen w-screen flex-col" variants={ variants } initial="initial" animate="animate" transition={ { staggerChildren: 0.2 } } exit={ "exit" }>
+      <motion.main className="font-[Alata] flex h-fit min-h-screen w-screen flex-col" variants={ variants } initial="initial" animate="animate" transition={ { staggerChildren: 0.2 } } exit={ "exit" }>
         <h1 className="hidden select-none md:block fixed z-0 tracking-tight md:text-[10rem] -left-36 opacity-10 top-[calc(50%+25px)] -translate-y-1/2  rotate-90">Fashion</h1>
 
         <motion.div id="hero" className="flex justify-between w-screen min-h-[70vh] md:min-h-[95vh] bg-[linear-gradient(hsl(var(--background)/50%),hsl(var(--background)/75%)),url(/Imgs/hero-bg.jpg)] bg-center bg-cover bg-no-repeat md:bg-fixed" variants={ variants }>
@@ -58,11 +58,13 @@ export default function Home () {
             <h1 className="text-3xl w-fit font-bold text-center z-10 relative px-2">New Arrivals</h1>
           </div>
 
+          <div className="w-full absolute h-full overflow-x-hidden">
 
-          <div className="w-[15rem] h-[10rem] left-[calc(50%-15rem)] top-[calc(50%+2rem)] -translate-y-1/2 absolute bg-violet-400 rounded-full blur-[150px]" />
-          <div className="w-[15rem] h-[12rem] left-[calc(50%+7rem)] top-[calc(50%+2.2rem)] -translate-y-1/2 absolute bg-pink-400 rounded-full blur-[150px]" />
-          <div className="w-[15rem] h-[12rem] left-[calc(50%+1rem)] -translate-x-1/2 top-[calc(50%+13rem)] -translate-y-1/2 absolute bg-emerald-400 rounded-full blur-[150px]" />
+            <div className="w-[15rem] h-[10rem] left-[calc(50%-15rem)] top-[calc(50%+2rem)] -translate-y-1/2 absolute bg-violet-400 rounded-full blur-[150px]" />
+            <div className="w-[15rem] h-[12rem] left-[calc(50%+7rem)] top-[calc(50%+2.2rem)] -translate-y-1/2 absolute bg-pink-400 rounded-full blur-[150px]" />
+            <div className="w-[15rem] h-[12rem] left-[calc(50%+1rem)] -translate-x-1/2 top-[calc(50%+13rem)] -translate-y-1/2 absolute bg-emerald-400 rounded-full blur-[150px]" />
 
+          </div>
           <div id="content" className="w-full h-fit relative top-1/2 -translate-y-1/2">
             <h1 className="w-full text-center text-[2.3rem] font-bold ">COMING SOON!</h1>
           </div>
