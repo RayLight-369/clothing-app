@@ -27,10 +27,10 @@ export default function Home () {
 
   return (
     <>
-      <motion.main className="font-[Alata] flex h-fit min-h-screen w-screen flex-col" variants={ variants } initial="initial" animate="animate" transition={ { staggerChildren: 0.2 } } exit={ "exit" }>
+      <motion.main className="font-[Alata] overflow-x-hidden overflow-y-auto flex h-fit min-h-screen w-screen flex-col" variants={ variants } initial="initial" animate="animate" transition={ { staggerChildren: 0.2 } } exit={ "exit" }>
         <h1 className="hidden select-none md:block fixed z-0 tracking-tight md:text-[10rem] -left-36 opacity-10 top-[calc(50%+25px)] -translate-y-1/2  rotate-90">Fashion</h1>
 
-        <motion.div id="hero" className="flex justify-between w-screen min-h-[70vh] md:min-h-[95vh] bg-[linear-gradient(hsl(var(--background)/50%),hsl(var(--background)/75%)),url(/Imgs/hero-bg.jpg)] bg-center bg-cover bg-no-repeat bg-fixed" variants={ variants }>
+        <motion.div id="hero" className="flex justify-between w-screen min-h-[70vh] md:min-h-[95vh] bg-[linear-gradient(hsl(var(--background)/50%),hsl(var(--background)/75%)),url(/Imgs/hero-bg.jpg)] bg-center bg-cover bg-no-repeat md:bg-fixed" variants={ variants }>
 
           <motion.div className="hero-content flex flex-col w-full gap-9 justify-center items-center p-4 md:p-10" variants={ variants } transition={ { staggerChildren: 0.2 } }>
             <motion.h1 className="text-[2.75rem] md:text-8xl text-center leading-[1.1] w-full font-[Montserrat] font-black tracking-[0.0275rem] " variants={ variants }>Explore Your <span className="md:text-background text-foreground [text-shadow:0px_0px_18px_hsl(var(--foreground)/20%)] md:[text-shadow:0px_1px_0_hsl(var(--foreground)),0px_0px_20px_hsl(var(--foreground)/40%)]">Style</span></motion.h1>
@@ -52,7 +52,7 @@ export default function Home () {
 
           <hr className="mt-5 block w-screen h-[2px] border-none outline-none bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)]" />
         </div>
-        <div id="new-arrivals" className="w-screen h-[80vh] relative z-[5] bg-background px-10 pt-10 pb-8 flex flex-col items-center">
+        <div id="new-arrivals" className=" w-screen h-[80vh] relative z-[5] bg-background px-10 pt-10 pb-8 flex flex-col items-center">
 
           <div className="flex h-fit relative justify-center w-full before:absolute ">
             <h1 className="text-3xl w-fit font-bold text-center z-10 relative px-2">New Arrivals</h1>
