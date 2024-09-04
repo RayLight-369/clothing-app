@@ -7,7 +7,7 @@ import Image from "next/image";
 const Navbar = () => {
 
   return (
-    <header className='w-screen fixed flex items-center px-8 py-[10px] h-[80px] justify-between text-sm font-[Alata] bg-background z-[42]'>
+    <header className='w-screen fixed flex items-center gap-1 px-4 py-[10px] h-[80px] justify-between text-sm font-[Alata] bg-background z-[42]'>
       <div className="logo h-full flex items-center ">
         {/* <p className="logo text-lg font-bold">AMULER</p> */ }
         <Image src={ "/logo1.png" } width={ 200 } height={ 120 } className={ "h-full w-auto dark:invert" } />
