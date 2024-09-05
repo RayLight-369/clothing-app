@@ -7,9 +7,8 @@ import Image from "next/image";
 const Navbar = () => {
 
   return (
-    <header className='w-screen fixed flex items-center gap-1 px-4 py-[10px] h-[80px] justify-between text-sm font-[Alata] bg-background z-[42]'>
+    <header className='w-screen fixed flex items-center gap-1 px-3 md:px-10 py-[10px] h-[80px] justify-between text-sm font-[Alata] bg-background z-[42]'>
       <div className="logo h-full flex items-center ">
-        {/* <p className="logo text-lg font-bold">AMULER</p> */ }
         <Image src={ "/logo1.png" } width={ 200 } height={ 120 } className={ "h-full w-auto dark:invert" } />
       </div>
       <nav className='flex items-center gap-5'>
@@ -27,7 +26,7 @@ const Navbar = () => {
         </div>
         <div className='hidden md:flex login gap-2 items-center'>
           <UserRound className='text-foreground' />
-          <p className="label">Search</p>
+          <p className="label">Login</p>
         </div>
       </div>
     </header>
