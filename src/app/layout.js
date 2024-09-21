@@ -31,7 +31,10 @@ export const metadata = {
     card: 'summary_large_image',
     images: [ 'https://safarclothing.store/logo1.png' ],
   },
-  themeColor: '#FF8D08',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FF8D08' },
+    { media: '(prefers-color-scheme: dark)', color: '#FF8D08' }, // Optional: You can define dark theme colors
+  ],
 };
 
 
