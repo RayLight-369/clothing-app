@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Allow: /Imgs/
+Allow: /
+Sitemap: https://safarclothing.store/sitemap.xml
+Sitemap: https://safarclothing.store/sitemap_images.xml
