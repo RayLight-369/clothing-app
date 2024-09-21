@@ -20,7 +20,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://rayfolio.me/svgs/metapfplogo.png',
+        url: 'https://safarclothing.store/logo1.png',
         width: 1200,
         height: 630,
         type: 'image/png',
@@ -29,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: [ 'https://rayfolio.me/svgs/metapfplogo.png' ],
+    images: [ 'https://safarclothing.store/logo1.png' ],
   },
   themeColor: '#FF8D08',
 };
