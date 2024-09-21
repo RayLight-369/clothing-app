@@ -8,11 +8,32 @@ import Config from "@/contexts/Config";
 
 const inter = Inter( { subsets: [ "latin" ] } );
 
-
 export const metadata = {
-  title: "Safar: A Clothing Brand.",
+  title: 'Safar: A Clothing Brand.',
   description: "Everything you are looking for...",
+  icons: "https://safarclothing.store/logo1.png",
+  openGraph: {
+    title: 'Safar: A Clothing Brand',
+    siteName: 'Safar',
+    url: 'https://safarclothing.store/',
+    description: 'Everything you are looking for...',
+    type: 'website',
+    images: [
+      {
+        url: 'https://rayfolio.me/svgs/metapfplogo.png',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [ 'https://rayfolio.me/svgs/metapfplogo.png' ],
+  },
+  themeColor: '#fff',
 };
+
 
 export default function RootLayout ( { children } ) {
   return (
