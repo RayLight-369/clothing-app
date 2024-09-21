@@ -31,7 +31,7 @@ export const metadata = {
     card: 'summary_large_image',
     images: [ 'https://rayfolio.me/svgs/metapfplogo.png' ],
   },
-  themeColor: '#fff',
+  themeColor: '#FF8D08',
 };
 
 
