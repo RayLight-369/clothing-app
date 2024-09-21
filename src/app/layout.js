@@ -20,10 +20,10 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://safarclothing.store/logo1.png',
+        url: 'https://safarclothing.store/safar_card.jpeg',
         width: 1200,
         height: 630,
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
