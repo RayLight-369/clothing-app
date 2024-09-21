@@ -29,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: [ 'https://safarclothing.store/logo1.png' ],
+    images: [ 'https://safarclothing.store/safar_card.jpeg' ],
   },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FF8D08' },
