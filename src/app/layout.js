@@ -10,13 +10,13 @@ const inter = Inter( { subsets: [ "latin" ] } );
 
 export const metadata = {
   title: 'Safar: A Clothing Brand.',
-  description: "Everything you are looking for...",
+  description: `Safar's the place for clothes every day, hoodies, shirts, and more in your way, step into style and start today.`,
   icons: "https://safarclothing.store/logo1.png",
   openGraph: {
     title: 'Safar: A Clothing Brand',
     siteName: 'Safar',
     url: 'https://safarclothing.store/',
-    description: 'Everything you are looking for...',
+    description: `Safar's the place for clothes every day, hoodies, shirts, and more in your way, step into style and start today.`,
     type: 'website',
     images: [
       {
