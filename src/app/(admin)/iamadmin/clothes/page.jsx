@@ -4,7 +4,7 @@ import React from 'react';
 
 const page = () => {
   return (
-    <p>hello</p>
+    <h1>Clothes</h1>
   );
 };
 

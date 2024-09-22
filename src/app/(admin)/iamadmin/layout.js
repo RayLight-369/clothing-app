@@ -20,14 +20,14 @@ export default function RootLayout ( { children } ) {
           <section className='h-screen w-screen'>
             {/* <ResizeableSidebar left={ <ChildLayout /> } right={ children } /> */ }
             <div className="h-full w-full flex flex-col gap-[1px] bg-muted">
-              <div id="header" className="h-[70px] bg-background flex justify-between px-6 items-center">
+              <div id="header" className="h-[70px] bg-background flex justify-between px-8 items-center">
                 <h1 className="font-bold text-lg">Admin Panel</h1>
                 <div className="h-full flex items-center">
                   <SidebarSheet />
                 </div>
               </div>
 
-              <div id="content" className="flex-1 bg-background p-6">
+              <div id="content" className="flex-1 bg-background p-8">
                 { children }
               </div>
             </div>
