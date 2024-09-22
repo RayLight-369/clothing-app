@@ -4,6 +4,7 @@ import "../../globals.css";
 import { cn } from "@/lib/utils";
 // import ResizeableSidebar from "./_components/ResizeableSidebar";
 import SidebarSheet from "./_components/SidebarSheet";
+import OptionBar from "./_components/OptionBar/OptionBar";
 
 const inter = Inter( { subsets: [ "latin" ] } );
 
@@ -32,6 +33,7 @@ export default function RootLayout ( { children } ) {
               </div>
             </div>
           </section>
+          <OptionBar />
         </ThemeContext>
       </body>
     </html>
