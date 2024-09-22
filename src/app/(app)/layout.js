@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import ThemeContext from "@/contexts/ThemeContext";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 import ChildLayout from "./ChildLayout";

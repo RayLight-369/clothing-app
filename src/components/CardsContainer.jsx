@@ -22,14 +22,20 @@ const CardsContainer = () => {
     }
   };
 
+  const imgs = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
+
   return (
     <div className='w-full h-fit'>
       <AnimatePresence>
         <motion.div ref={ ref } className='w-full h-full px-5 py-8 gap-x-10 gap-y-14 grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] justify-center' variants={ variants } initial="initial" animate={ inView ? "animate" : "initial" } transition={ { staggerChildren: 0.1 } }>
-          <Card i={ 1 } />
-          <Card i={ 2 } />
-          <Card i={ 3 } />
-          <Card i={ 4 } />
+
+          <Card i={ 1 + ".png" } key={ 100 } />
+
+          {
+            imgs.map( ( img, key ) => (
+              <Card i={ img + ".jpeg" } key={ key } />
+            ) )
+          }
         </motion.div>
       </AnimatePresence>
     </div>

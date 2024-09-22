@@ -36,15 +36,15 @@ export default function Home () {
           <motion.div className="hero-content flex flex-col w-full gap-9 justify-center items-center p-4 md:p-10" variants={ variants } transition={ { staggerChildren: 0.2 } }>
             <motion.h1 className="text-[2.75rem] md:text-8xl text-center leading-[1.1] w-full font-[Montserrat] font-black tracking-[0.0275rem] " variants={ variants }>Where culture meets <span className="md:text-background text-foreground [text-shadow:0px_0px_18px_hsl(var(--foreground)/20%)] md:[text-shadow:0px_1px_0_hsl(var(--foreground)),0px_0px_20px_hsl(var(--foreground)/40%)]">trend</span></motion.h1>
             <motion.p variants={ variants } className="text-[1.15rem] font-[Alata] text-foreground md:text-[1.4rem] text-center w-[97%] md:w-[77%] text-pretty">Elevate your wardrobe with clothes that shine, simple styles that make you feel fine. Dress to impress, every single time.</motion.p>
-            <Link href={ "/store" } className='no-underline text-left w-[200px] px-10 py-3 bg-foreground text-background hover:shadow-md overflow-hidden transition-all duration-[250ms] hover:px-5 hover:-skew-y-3 hover:-skew-x-3 rounded-full relative after:transition-all after:duration-200 after:content-["→"] after:absolute after:text-[24px] after:-right-10 after:text-background after:block after:top-1/2 after:-translate-y-1/2 hover:after:right-5'>Start Trending</Link>
+            <Link href={ "/store" } className='no-underline text-left w-[186px] px-10 py-3 bg-foreground text-background hover:shadow-md overflow-hidden transition-all duration-[250ms] hover:px-5 hover:-skew-y-2 hover:-skew-x-2 rounded-full relative after:transition-all after:duration-200 after:content-["→"] after:absolute after:text-[24px] after:-right-10 after:text-background after:block after:top-1/2 after:-translate-y-1/2 hover:after:right-5'>Start Trending</Link>
           </motion.div>
 
         </motion.div>
 
-        <div id="best-sellers" className="w-screen relative z-[5] bg-background h-fit px-10 pt-14 pb-8 flex flex-col items-center gap-8">
+        <div id="new-arrivals" className="w-screen relative z-[5] bg-background h-fit px-10 pt-14 pb-8 flex flex-col items-center gap-8">
 
           <div className="flex h-fit relative justify-center w-full before:absolute ">
-            <h1 className="text-3xl w-fit font-bold text-center  z-10 relative px-2">Best Sellers</h1>
+            <h1 className="text-3xl w-fit font-bold text-center  z-10 relative px-2">New Arrivals</h1>
           </div>
 
           <div id="content" className="w-full h-fit">
@@ -53,7 +53,7 @@ export default function Home () {
 
           <hr className="mt-5 block w-screen h-[2px] border-none outline-none bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)]" />
         </div>
-        <div id="new-arrivals" className=" w-screen h-[80vh] relative z-[5] bg-background px-10 pt-10 pb-8 flex flex-col items-center">
+        {/* <div id="new-arrivals" className=" w-screen h-[80vh] relative z-[5] bg-background px-10 pt-10 pb-8 flex flex-col items-center">
 
           <div className="flex h-fit relative justify-center w-full before:absolute ">
             <h1 className="text-3xl w-fit font-bold text-center z-10 relative px-2">New Arrivals</h1>
@@ -71,7 +71,7 @@ export default function Home () {
           </div>
 
           <hr className="relative top-[calc(100%)] block w-screen h-[2px] border-none outline-none bg-[linear-gradient(to_right,transparent_5%,hsl(var(--foreground)/40%)_50%,transparent_95%)]" />
-        </div>
+        </div> */}
 
       </motion.main>
 
