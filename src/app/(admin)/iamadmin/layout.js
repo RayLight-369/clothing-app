@@ -32,7 +32,6 @@ export default function RootLayout ( { children } ) {
               </div>
             </div>
           </section>
-          { children }
         </ThemeContext>
       </body>
     </html>
