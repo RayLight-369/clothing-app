@@ -35,6 +35,8 @@ const ClothesContext = ( { children } ) => {
 
       console.log( clothesData );
 
+      setClothes( clothesData );
+
     } )();
   }, [] );
 

@@ -151,7 +151,7 @@ const deleteData = async ( {
   return false;
 };
 
-const uploadFile = async ( postID, id, file, type = "users" ) => {
+const uploadFile = async ( postID, id, file, type = "clothes" ) => {
 
   try {
 
