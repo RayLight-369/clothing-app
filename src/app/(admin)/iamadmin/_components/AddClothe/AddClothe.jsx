@@ -6,6 +6,8 @@ import { useClothes } from '@/contexts/ClothesContext';
 import { API } from '@/lib/constants';
 import { v4 as uid } from "uuid";
 import { uploadFile, updateData, deleteFile } from "@/lib/supabase";
+import MultipleSelector from '../MultipleSelector';
+import MultiSelectDropdown from '../MultiSelectDropdown';
 
 
 const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
@@ -16,14 +18,15 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
   const [ adding, setAdding ] = useState( false );
   const [ clotheTitle, setClotheTitle ] = useState( clothe?.title || "" );
   // const [ clotheOverview, setClotheOverview ] = useState( clothe?.overview || "" );
-  const [ color, setColor ] = useState( clothe?.color || "" );
-  const [ size, setSize ] = useState( clothe?.size || "" );
+
   const [ type, setType ] = useState( clothe?.type || "" );
   const [ price, setPrice ] = useState( clothe?.price || 0 );
   const [ variants, setVariants ] = useState( clothe?.variants || [] );
 
-  const [ sizeDropDown, toggleSizeDropDown ] = useState( false );
   const [ typeDropDown, toggleTypeDropDown ] = useState( false );
+
+  const [ colors, setColors ] = useState( clothe?.colors || [] );
+  const [ sizes, setSizes ] = useState( clothe?.sizes || [] );
 
   const [ images, setImages ] = useState( clothe?.images || [] );
   const [ imagesData, setImagesData ] = useState( {} );
@@ -32,14 +35,6 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
 
   const data = useMemo( () => [
     {
-      element: "Color",
-      class: "color",
-      inputClass: "color-input",
-      setState: setColor,
-      value: color,
-      type: "text"
-    },
-    {
       element: "Price Rs",
       class: "price",
       inputClass: "price-input",
@@ -47,7 +42,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
       value: price,
       type: "number"
     }
-  ], [ color, price ] );
+  ], [ price ] );
 
 
 
@@ -310,7 +305,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
     const uploaded_at = dateParts.join( "-" );
 
     const ReqData = {
-      title: clotheTitle, uploaded_at, images, color, price, size, type
+      title: clotheTitle, uploaded_at, images, colors, price, sizes, type
     };
 
 
@@ -394,9 +389,19 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
 
               <div className={ styles[ "infos" ] }>
 
-                <DropDown key={ "size" } setState={ setSize } selected={ size } array={ [ "S", "M", "L", "XL", "XXL" ] } label='Size' dropDownOpen={ sizeDropDown } toggleDropDown={ toggleSizeDropDown } />
+                {/* <DropDown key={ "size" } setState={ setSize } selected={ size } array={ [ "S", "M", "L", "XL", "XXL" ] } label='Size' dropDownOpen={ sizeDropDown } toggleDropDown={ toggleSizeDropDown } /> */ }
                 <DropDown key={ "type" } setState={ setType } selected={ type } array={ [ "T-Shirt", "SweatShirt", "Hoodie" ] } label='Type' dropDownOpen={ typeDropDown } toggleDropDown={ toggleTypeDropDown } />
-                {/* <DropDown key={ "gearbox" } setState={ setGearbox } selected={ gearbox } array={ [ "Automatique", "Manuel", "Automatique à variation continue" ] } label='Boîte de vitesses' dropDownOpen={ gearboxDropdown } toggleDropDown={ toggleGearboxDropdown } /> */ }
+
+                <div key={ "Colors" }>
+                  <label>Colors:</label>
+                  <MultipleSelector selectedItems={ colors } setSelectedItems={ setColors } />
+                </div>
+
+                <div key={ "Sizes" }>
+                  <label>Sizes:</label>
+                  <MultiSelectDropdown selectedItems={ sizes } setSelectedItems={ setSizes } options={ [ "S", "M", "L", "XL", "XXL" ] } />
+                </div>
+
 
                 { data.map( ( value, index ) => (
 
