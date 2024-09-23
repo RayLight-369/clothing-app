@@ -238,10 +238,10 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
           }
         } );
 
-        const clothe_ = Data.data[ 0 ];
+        const clothe = Data.data[ 0 ];
 
         setClothes( prev =>
-          prev.map( prevClothe => clothe_.id == prevClothe.id ? clothe_ : prevClothe )
+          prev.map( prevClothe => clothe.id == prevClothe.id ? clothe : prevClothe )
         );
 
       } )();

@@ -53,12 +53,12 @@ const page = () => {
       <AnimatePresence mode='wait'>
         { clotheToBeEdited && (
           <Modal>
-            <AddClothe handleClose={ () => setClotheToBeEdited( null ) } clothe={ clotheToBeEdited } type={ "edit" } />
+            <AddClothe handleClose={ () => setClotheToBeEdited( null ) } clothe={ clotheToBeEdited } type_={ "edit" } />
           </Modal>
         ) }
         { clotheToBeDeleted && (
           <Modal>
-            <AddClothe handleClose={ () => clotheToBeDeleted( null ) } clothe={ clotheToBeDeleted } type={ "del" } />
+            <AddClothe handleClose={ () => clotheToBeDeleted( null ) } clothe={ clotheToBeDeleted } type_={ "del" } />
           </Modal>
         ) }
       </AnimatePresence>
