@@ -25,6 +25,12 @@ export const metadata = {
         height: 630,
         type: 'image/jpeg',
       },
+      {
+        url: 'https://safarclothing.store/favicon.ico',
+        width: 32,
+        height: 32,
+        type: 'image/x-icon',
+      },
     ],
   },
   twitter: {
