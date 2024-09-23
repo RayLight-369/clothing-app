@@ -23,16 +23,16 @@ export default function RootLayout ( { children } ) {
           <ClothesContext>
             <section className='h-screen w-screen'>
               {/* <ResizeableSidebar left={ <ChildLayout /> } right={ children } /> */ }
-              <div className="h-full w-full flex flex-col gap-[1px] bg-muted">
-                <div id="header" className="h-[70px] bg-background flex justify-between px-8 items-center">
+              <div className="h-full w-full flex-col gap-[1px] bg-muted">
+                <div id="header" className="h-[70px] bg-background flex justify-between px-8 items-center border-b-2">
                   <h1 className="font-bold text-lg">Admin Panel</h1>
-                  <div className="h-full flex items-center">
+                  <div className="h-full flex items-center gap-1">
                     <ThemeToggle />
                     <SidebarSheet />
                   </div>
                 </div>
 
-                <div id="content" className="flex-1 bg-background p-8">
+                <div id="content" className="h-full bg-background p-8">
                   { children }
                 </div>
               </div>
