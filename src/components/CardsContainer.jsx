@@ -2,9 +2,12 @@ import { memo } from 'react';
 import Card from './Card';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useClothes } from '@/contexts/ClothesContext';
 
 
 const CardsContainer = () => {
+
+  const { clothes } = useClothes();
 
   const [ ref, inView ] = useInView( {
     triggerOnce: true
@@ -35,6 +38,10 @@ const CardsContainer = () => {
               <Card i={ img + ".jpeg" } key={ key } />
             ) )
           }
+
+          { clothes.map( ( clothe, key ) => (
+            <Card clothe={ clothe } key={ clothe.id + "clothe" } />
+          ) ) }
         </motion.div>
       </AnimatePresence>
     </div>

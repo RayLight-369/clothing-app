@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 import ChildLayout from "./ChildLayout";
 import Config from "@/contexts/Config";
+import ClothesContext from "@/contexts/ClothesContext";
 
 const inter = Inter( { subsets: [ "latin" ] } );
 
@@ -53,12 +54,14 @@ export default function RootLayout ( { children } ) {
           defaultTheme="system"
           enableSystem
         >
-          <Navbar />
-          <Config>
-            <ChildLayout>
-              { children }
-            </ChildLayout>
-          </Config>
+          <ClothesContext>
+            <Navbar />
+            <Config>
+              <ChildLayout>
+                { children }
+              </ChildLayout>
+            </Config>
+          </ClothesContext>
         </ThemeContext>
       </body>
     </html>

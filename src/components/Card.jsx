@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useConfig } from '@/contexts/Config';
 import Link from 'next/link';
 
-const Card = ( { i } ) => {
+const Card = ( { i, clothe } ) => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
   const { selectedImage, setSelectedImage } = useConfig();
 
@@ -38,16 +38,16 @@ const Card = ( { i } ) => {
         variants={ variants }
       >
         <img
-          src={ `/Imgs/${ i }` }
+          src={ clothe?.images?.[ 0 ] || `/Imgs/${ i }` }
           className="w-full h-full object-cover transition-[filter] rounded-md filter brightness-75 group-hover/card:filter-none cursor-pointer"
-          onClick={ () => handleImageClick( `/Imgs/${ i }` ) }
+          onClick={ () => handleImageClick( clothe?.images?.[ 0 ] || `/Imgs/${ i }` ) }
         />
         <div className="w-full flex justify-between items-start">
           <Link href={ "/" } className="content w-[80%] font-[Montserrat] font-medium flex flex-col relative">
             <p className="title font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
-              Half Sleeve T-Shirt Half Sleeve T-Shirt
+              { clothe?.title || "Half Sleeve T-Shirt Half Sleeve T-Shirt" }
             </p>
-            <p className="price">12 PKR</p>
+            <p className="price">{ ( !!clothe?.price && clothe.price + " PKR" ) || "12 PKR" }</p>
           </Link>
           <Button variant="outline" className="aspect-square p-[10px] border-[1.5px] rounded-full text-foreground">
             <ShoppingCart />
