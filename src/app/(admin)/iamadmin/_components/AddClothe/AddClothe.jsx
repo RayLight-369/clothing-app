@@ -3,114 +3,36 @@ import styles from "./AddClothe.module.css";
 import { MotionConfig, motion } from 'framer-motion';
 import DropDown from '../DropDown/DropDown';
 import { useClothes } from '@/contexts/ClothesContext';
-import { API } from '../../constants';
+import { API } from '@/lib/constants';
 import { v4 as uid } from "uuid";
 import { uploadFile, updateData, deleteFile } from "@/lib/supabase";
 
 
-const AddCar = ( { handleClose, type = "new", car } ) => {
+const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
 
   // const navigate = useNavigate();
-  const { setCars, brands } = useCars();
-  const [ carID, setCarID ] = useState( car?.id || 0 );
+  const { setClothes } = useClothes();
+  const [ clotheID, setClotheID ] = useState( clothe?.id || 0 );
   const [ adding, setAdding ] = useState( false );
-  const [ carTitle, setCarTitle ] = useState( car?.title || "" );
-  const [ carOverview, setCarOverview ] = useState( car?.overview || "" );
-  const [ brand, setBrand ] = useState( brands?.find( brand => brand.id == car?.brand )?.brandName || undefined );
-  const [ fuelType, setFuelType ] = useState( car?.fuel_type || "" );
-  const [ pricePerDay, setPricePerDay ] = useState( car?.price_per_day || 0 );
-  const [ pricePerMonth, setPricePerMonth ] = useState( car?.price_per_month || 0 );
-  const [ mileage, setMilage ] = useState( car?.milage || "" );
-  const [ energy, setEnergy ] = useState( car?.energy || "" );
-  const [ guarantee, setGuarantee ] = useState( car?.guarantee || "" );
-  const [ color, setColor ] = useState( car?.color || "" );
-  const [ certificate, setCertificate ] = useState( car?.certificate || "" );
-  const [ emission, setEmission ] = useState( car?.emission || "" );
-  const [ modelYear, setModelYear ] = useState( car?.model_year || "" );
-  const [ seatingCapacity, setSeatingCapacity ] = useState( car?.seating_capacity || "" );
-  const [ gearbox, setGearbox ] = useState( car?.gearbox || "" );
-  const [ accessories, setAccessories ] = useState( car?.accessories || [] );
-  const [ fuelDropdown, toggleFuelDropdown ] = useState( false );
-  const [ brandDropdown, toggleBrandDropdown ] = useState( false );
-  const [ gearboxDropdown, toggleGearboxDropdown ] = useState( false );
+  const [ clotheTitle, setClotheTitle ] = useState( clothe?.title || "" );
+  // const [ clotheOverview, setClotheOverview ] = useState( clothe?.overview || "" );
+  const [ color, setColor ] = useState( clothe?.color || "" );
+  const [ size, setSize ] = useState( clothe?.size || "" );
+  const [ type, setType ] = useState( clothe?.type || "" );
+  const [ price, setPrice ] = useState( clothe?.price || 0 );
+  const [ variants, setVariants ] = useState( clothe?.variants || [] );
 
-  const [ images, setImages ] = useState( car?.images || [] );
+  const [ sizeDropDown, toggleSizeDropDown ] = useState( false );
+  const [ typeDropDown, toggleTypeDropDown ] = useState( false );
+
+  const [ images, setImages ] = useState( clothe?.images || [] );
   const [ imagesData, setImagesData ] = useState( {} );
   const [ imagesDone, setImagesDone ] = useState( false );
 
-  // const Accessories = useMemo( () => [
-  //   "Climatiseur",
-  //   "Serrures de porte électriques",
-  //   "Système de freinage antiblocage",
-  //   "Assistance au freinage",
-  //   "Direction assistée",
-  //   "Airbag conducteur",
-  //   "Airbag passager",
-  //   "Vitres électriques",
-  //   "Lecteur CD",
-  //   "Verrouillage centralisé",
-  //   "Capteur de collision",
-  //   "Sièges en cuir",
-  //   "Bluetooth",
-  //   "Caméra de vision arrière",
-  //   "Automatique"
-  // ], [] );
-
-  // <div className={ styles[ "price-per-day" ] }>
-  //   <label htmlFor="price-per-day">Price Per Day:</label>
-  //   <input onChange={ ( e ) => {
-  //     setPricePerDay( e.target.value );
-  //   } } value={ pricePerDay } type="number" min={ 0 } name="price-per-day" id="price-per-day" className={ styles[ 'price-per-day-input' ] } />
-  // </div>;
-
-
-  // useEffect( () => {
-  //   console.log( brands?.map( ( brand, i ) => brand.brandName ) );
-  // }, [ brands ] );
 
   const data = useMemo( () => [
     {
-      element: "Prix / Jour €",
-      class: "price-per-day",
-      inputClass: "price-per-day-input",
-      setState: setPricePerDay,
-      value: pricePerDay,
-      type: "text"
-    },
-    {
-      element: "Prix / Mois €",
-      class: "price-per-month",
-      inputClass: "price-per-month-input",
-      setState: setPricePerMonth,
-      value: pricePerMonth,
-      type: "text"
-    },
-    {
-      element: "Kilométrage",
-      class: "mileage",
-      inputClass: "mileage-input",
-      setState: setMilage,
-      value: mileage,
-      type: "number"
-    },
-    {
-      element: "Énergie",
-      class: "energy",
-      inputClass: "energy-input",
-      setState: setEnergy,
-      value: energy,
-      type: "text"
-    },
-    {
-      element: "Garantie",
-      class: "guarantee",
-      inputClass: "guarantee-input",
-      setState: setGuarantee,
-      value: guarantee,
-      type: "text"
-    },
-    {
-      element: "Couleur",
+      element: "Color",
       class: "color",
       inputClass: "color-input",
       setState: setColor,
@@ -118,46 +40,15 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
       type: "text"
     },
     {
-      element: "Certificat",
-      class: "certificate",
-      inputClass: "certificate-input",
-      setState: setCertificate,
-      value: certificate,
-      type: "text"
-    },
-    {
-      element: "Émission",
-      class: "emission",
-      inputClass: "emission-input",
-      setState: setEmission,
-      value: emission,
-      type: "text"
-    },
-    {
-      element: "Année modèle",
-      class: "model-year",
-      inputClass: "model-year-input",
-      setState: setModelYear,
-      value: modelYear,
-      type: "text"
-    },
-    {
-      element: "Nombre de places",
-      class: "seating-capacity",
-      inputClass: "seating-capacity-input",
-      setState: setSeatingCapacity,
-      value: seatingCapacity,
+      element: "Price Rs",
+      class: "price",
+      inputClass: "price-input",
+      setState: setPrice,
+      value: price,
       type: "number"
-    },
-    // {
-    //   element: "Gearbox",
-    //   class: "gearbox",
-    //   inputClass: "gearbox-input",
-    //   setState: setGearbox,
-    //   value: gearbox,
-    //   type: "text"
-    // }
-  ], [ pricePerDay, pricePerMonth, mileage, energy, guarantee, color, certificate, emission, modelYear, seatingCapacity ] );
+    }
+  ], [ color, price ] );
+
 
 
   // const [ priorityInput, setPriorityInput ] = useState( "" );
@@ -170,14 +61,14 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   useEffect( () => {
 
     let IMG_OBJECT =
-      type == "edit"
-        ? [ ...car?.images ]?.reduce( ( p, c ) => {
+      type_ == "edit"
+        ? [ ...clothe?.images ]?.reduce( ( p, c ) => {
           p[ c ] = c;
           return p;
         }, {} )
         : {};
 
-    console.log( "car.imgs from line 165: ", car?.images );
+    console.log( "clothe.imgs from line 165: ", clothe?.images );
     setImagesData( IMG_OBJECT );
 
   }, [] );
@@ -186,17 +77,17 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
 
   useEffect( () => {
 
-    if ( type == "edit" ) {
+    if ( type_ == "edit" ) {
       setImagesData( {
-        ...[ ...car?.images || images ]?.reduce( ( p, c ) => {
+        ...[ ...clothe?.images || images ]?.reduce( ( p, c ) => {
           p[ c ] = c;
           return p;
         }, {} ),
       } );
     }
-    console.log( car );
+    console.log( clothe );
 
-  }, [ car ] );
+  }, [ clothe ] );
 
   function deleteEntry ( obj, indexToDelete ) {
     const keys = Object.keys( obj );
@@ -233,7 +124,7 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   };
 
 
-  const SetImages = async ( images_, Car ) => {
+  const SetImages = async ( images_, Clothe ) => {
 
     let imageArray = [];
 
@@ -243,11 +134,11 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
       let extension = images_[ image ].type.replace( "image/", "" ).toLowerCase();
 
       imageArray.push(
-        `${ process.env.REACT_APP_SUPABASE_URL }/storage/v1/object/public/images/users/${ Car.id }/${ fileId }.${ extension }`
+        `${ process.env.NEXT_PUBLIC_SUPABASE_URL }/storage/v1/object/public/images/clothes/${ Clothe.id }/${ fileId }.${ extension }`
       );
 
       await uploadFile(
-        Car.id,
+        Clothe.id,
         fileId + "." + extension,
         images_[ image ]
       );
@@ -273,7 +164,7 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
       //   body: JSON.stringify( ReqData )
       // } );
 
-      console.log( "casasasar: ", car );
+      console.log( "casasasar: ", clothe );
       console.log( "i: ", imageArray );
       console.log( "r: ", ReqData );
 
@@ -299,7 +190,7 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   //       const extension = images[ image ].type.replace( "image/", "" ).toLowerCase();
 
   //       imageArray.push(
-  //         `https://lmxqvapkmczkpcfheiun.supabase.co/storage/v1/object/public/images/users/${ postID }/${ fileId }.${ extension }`
+  //         `https://lmxqvapkmczkpcfheiun.supabase.co/storage/v1/object/public/images/clothes/${ postID }/${ fileId }.${ extension }`
   //       );
   //       await uploadFile(
   //         session?.user.id,
@@ -316,7 +207,7 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   //     for ( const image of deletedImages ) {
   //       const url = image.split( "/" );
   //       const fileID = url[ url.length - 1 ];
-  //       await deleteFile( `users/${ session?.user.id }/${ postID }/${ fileID }` );
+  //       await deleteFile( `clothes/${ session?.user.id }/${ postID }/${ fileID }` );
   //     }
   //   }
 
@@ -338,19 +229,19 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
       ( async () => {
 
         const Data = await updateData( {
-          table: "Cars",
+          table: "Clothes",
           where: {
-            id: carID
+            id: clotheID
           },
           object: {
             images
           }
         } );
 
-        const car = Data.data[ 0 ];
+        const clothe_ = Data.data[ 0 ];
 
-        setCars( prev =>
-          prev.map( prevCar => car.id == prevCar.id ? car : prevCar )
+        setClothes( prev =>
+          prev.map( prevClothe => clothe_.id == prevClothe.id ? clothe_ : prevClothe )
         );
 
       } )();
@@ -363,10 +254,10 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
     return imagesArray.filter( ( image ) => !objKeysSet.has( image ) );
   };
 
-  const SetImages_Edit = async ( images_, car ) => {
+  const SetImages_Edit = async ( images_, clothe ) => {
     setImagesDone( false );
     const imageArray = [];
-    const deletedImages = getMissingImages( car.images, images_ );
+    const deletedImages = getMissingImages( clothe.images, images_ );
 
     for ( let image in images_ ) {
       if ( typeof images_[ image ] !== "string" ) {
@@ -374,10 +265,10 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
         const extension = images_[ image ].type.replace( "image/", "" ).toLowerCase();
 
         imageArray.push(
-          `${ process.env.REACT_APP_SUPABASE_URL }/storage/v1/object/public/images/users/${ car.id }/${ fileId }.${ extension }`
+          `${ process.env.NEXT_PUBLIC_SUPABASE_URL }/storage/v1/object/public/images/clothes/${ clothe.id }/${ fileId }.${ extension }`
         );
         await uploadFile(
-          car.id,
+          clothe.id,
           `${ fileId }.${ extension }`,
           images_[ image ]
         );
@@ -390,12 +281,12 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
       for ( const image of deletedImages ) {
         const url = image.split( "/" );
         const fileID = url[ url.length - 1 ];
-        await deleteFile( `users/${ car.id }/${ fileID }` );
+        await deleteFile( `clothes/${ clothe.id }/${ fileID }` );
       }
     }
 
-    let _car = car;
-    _car.images = imageArray;
+    let _clothe = clothe;
+    _clothe.images = imageArray;
 
     setImages( ( prev ) => ( [ ...imageArray ] ) );
     setImagesDone( true );
@@ -406,31 +297,31 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   //   scale: 1.06,
   // };
 
-  async function addCar ( images_ ) {
+  async function addClothe ( images_ ) {
 
     setAdding( true );
 
-    console.log( car );
+    console.log( clothe );
 
     const dateParts = dateInput.split( "-" );
 
     [ dateParts[ 0 ], dateParts[ 2 ] ] = [ dateParts[ 2 ], dateParts[ 0 ] ];
 
-    const due_date = dateParts.join( "-" );
+    const uploaded_at = dateParts.join( "-" );
 
     const ReqData = {
-      title: carTitle, overview: carOverview, due_date, brand, fuel_type: fuelType, images, accessories, certificate, color, gearbox, emission, energy, mileage, guarantee, seating_capacity: seatingCapacity, model_year: modelYear, price_per_day: pricePerDay, price_per_month: pricePerMonth
+      title: clotheTitle, uploaded_at, images, color, price, size, type
     };
 
 
-    if ( !car && ( !carTitle.trim().length || !Object.keys( imagesData ).length ) && type != "del" ) return setAdding( false );
+    if ( !clothe && ( !clotheTitle.trim().length || !Object.keys( imagesData ).length ) && type != "del" ) return setAdding( false );
 
-    if ( type === "edit" || type == "del" ) ReqData.id = car.id;
+    if ( type_ === "edit" || type_ == "del" ) ReqData.id = clothe.id;
 
     try {
 
-      const res = await fetch( type == "edit" ? API.EDIT_CLOTHE : type == "new" ? API.NEW_CLOTHE : API.DEL_CLOTHE, {
-        method: type == "edit" ? "PUT" : type == "new" ? 'POST' : "DELETE",
+      const res = await fetch( type_ == "edit" ? API.EDIT_CLOTHE : type_ == "new" ? API.NEW_CLOTHE : API.DEL_CLOTHE, {
+        method: type_ == "edit" ? "PUT" : type_ == "new" ? 'POST' : "DELETE",
         body: JSON.stringify( ReqData ),
         headers: {
           'Content-Type': 'application/json'
@@ -439,33 +330,33 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
 
       if ( res.ok ) {
         const body = await res.json();
-        const car = body.data[ 0 ];
+        const clothe = body.data[ 0 ];
 
-        console.log( "car: ", car );
+        console.log( "clothe: ", clothe );
 
-        setCarID( car.id );
+        setClotheID( clothe.id );
 
-        if ( type == "new" )
-          await SetImages( images_, car );
-        else if ( type == "edit" )
-          await SetImages_Edit( images_, car );
+        if ( type_ == "new" )
+          await SetImages( images_, clothe );
+        else if ( type_ == "edit" )
+          await SetImages_Edit( images_, clothe );
 
         console.log( body.data );
 
-        if ( type === "edit" ) {
-          setCars( prevCars =>
-            prevCars.map( prevCar =>
-              prevCar.id === car.id ? car : prevCar
+        if ( type_ === "edit" ) {
+          setClothes( prevClothes =>
+            prevClothes.map( prevClothe =>
+              prevClothe.id === clothe.id ? clothe : prevClothe
             )
           );
-        } else if ( type == "del" ) {
-          setCars( prevCars =>
-            prevCars.filter( prevCar =>
-              prevCar.id != ReqData.id
+        } else if ( type_ == "del" ) {
+          setClothes( prevClothes =>
+            prevClothes.filter( prevClothe =>
+              prevClothe.id != ReqData.id
             )
           );
         } else {
-          setCars( prev => [ car, ...prev ] );
+          setClothes( prev => [ clothe, ...prev ] );
         }
 
         handleClose();
@@ -481,12 +372,6 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
 
   useEffect( () => {
 
-    console.log( accessories );
-
-  }, [ accessories ] );
-
-  useEffect( () => {
-
     console.log( "updated img data: ", imagesData );
     console.log( "updated images: ", images );
 
@@ -494,24 +379,24 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
 
   return (
     <MotionConfig transition={ { type: "spring", damping: 7 } } >
-      <div className={ styles[ "add-car" ] }>
+      <div className={ styles[ "add-clothe" ] }>
         <div className={ styles[ "header" ] }>
-          <p className={ styles[ "title" ] }>{ type === "edit" ? "Modifiez votre voiture" : type == "new" ? "Ajouter une nouvelle voiture" : "Es-tu sûr?" }</p>
+          <p className={ styles[ "title" ] }>{ type_ === "edit" ? "Edit clothe" : type_ == "new" ? "Add new clothe" : "Are you sure?" }</p>
           <motion.button type='button' whileHover={ buttonWhileHovering( 1.2, .2 ) } className={ styles[ 'close' ] } onClick={ handleClose }>✖</motion.button>
         </div>
         {
-          type != "del" && (
+          type_ != "del" && (
             <>
               <div className={ styles[ "inputs" ] }>
-                <input type="text" placeholder='Titre de la voiture' className={ styles[ "name" ] } value={ carTitle } onChange={ e => setCarTitle( e.target.value ) } />
-                <textarea placeholder='Aperçu de la voiture' className={ styles[ "description" ] } value={ carOverview } onChange={ e => setCarOverview( e.target.value ) } />
+                <input type="text" placeholder='Title' className={ styles[ "name" ] } value={ clotheTitle } onChange={ e => setClotheTitle( e.target.value ) } />
+                {/* <textarea placeholder='Aperçu de la voiture' className={ styles[ "description" ] } value={ clotheOverview } onChange={ e => setClotheOverview( e.target.value ) } /> */ }
               </div>
 
               <div className={ styles[ "infos" ] }>
 
-                <DropDown key={ "fuelType" } setState={ setFuelType } selected={ fuelType } array={ [ "Diesel", "Unleaded Petrol", "CNG", "Electric" ] } label='Carburant' dropDownOpen={ fuelDropdown } toggleDropDown={ toggleFuelDropdown } />
-                <DropDown key={ "brand" } setState={ setBrand } selected={ brand } array={ brands?.map( ( brand ) => brand.brandName ) } backWorkArray={ brands?.map( brand => brand.id ) } label='Marque' dropDownOpen={ brandDropdown } toggleDropDown={ toggleBrandDropdown } />
-                <DropDown key={ "gearbox" } setState={ setGearbox } selected={ gearbox } array={ [ "Automatique", "Manuel", "Automatique à variation continue" ] } label='Boîte de vitesses' dropDownOpen={ gearboxDropdown } toggleDropDown={ toggleGearboxDropdown } />
+                <DropDown key={ "size" } setState={ setSize } selected={ size } array={ [ "S", "M", "L", "XL", "XXL" ] } label='Size' dropDownOpen={ sizeDropDown } toggleDropDown={ toggleSizeDropDown } />
+                <DropDown key={ "type" } setState={ setType } selected={ type } array={ [ "T-Shirt", "SweatShirt", "Hoodie" ] } label='Type' dropDownOpen={ typeDropDown } toggleDropDown={ toggleTypeDropDown } />
+                {/* <DropDown key={ "gearbox" } setState={ setGearbox } selected={ gearbox } array={ [ "Automatique", "Manuel", "Automatique à variation continue" ] } label='Boîte de vitesses' dropDownOpen={ gearboxDropdown } toggleDropDown={ toggleGearboxDropdown } /> */ }
 
                 { data.map( ( value, index ) => (
 
@@ -524,34 +409,10 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
 
                 ) ) }
 
-                <div className={ styles[ "accessories" ] }>
-                  <label htmlFor="accessories">Accessoires:</label>
-                  <div className={ styles[ "content" ] }>
-                    { Accessories.map( ( a, i ) => (
-                      <div className={ styles[ "accessory" ] }>
-                        <label htmlFor={ a.split( " " )[ 0 ] }>{ a }</label>
-                        <input type="checkbox" name={ a.split( " " )[ 0 ] } id={ a.split( " " )[ 0 ] } checked={ accessories.includes( a ) } onChange={ e => {
-                          if ( e.target.checked ) {
-                            setAccessories( prev => [ ...prev, a ] );
-                          } else {
-                            setAccessories( prev => {
-                              if ( prev.includes( a ) ) {
-                                return prev.filter( p => p !== a );
-                              }
-                            } );
-                          }
-
-                        } } />
-                        {/* <BreakSpan /> */ }
-                      </div>
-                    ) ) }
-                  </div>
-                </div>
-
                 <div className={ styles[ "images" ] }>
                   <p>Images: </p>
                   <label htmlFor={ "file" } className={ styles[ "image-label" ] }>
-                    Sélectionnez des images
+                    Select Images
                   </label>
                   <input
                     type="file"
@@ -574,7 +435,7 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
                           src={ img }
                           width={ 200 }
                           height={ 200 }
-                          alt="ad image"
+                          alt="clothe image"
                           className={ styles[ "img" ] }
                         />
 
@@ -597,19 +458,19 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
           <motion.button
             whileHover={ buttonWhileHovering( 1.1, .2 ) }
             className={ styles[ "add-button" ] }
-            onClick={ e => {
-              addCar( imagesData );
+            onClick={ () => {
+              addClothe( imagesData );
             } }
             disabled={ adding }
           >
-            { adding ? type == 'new' ? "Ajouter..." : type == "edit" ? "Mise à jour..." : "Suppression..." : type == 'new' ? "Ajouter" : type == "edit" ? "Mise à jour" : "Supprimer" }
+            { adding ? type_ == 'new' ? "Adding..." : type_ == "edit" ? "Editing..." : "Deleting..." : type_ == 'new' ? "Add" : type_ == "edit" ? "Edit" : "Delete" }
           </motion.button>
           <motion.button
             whileHover={ buttonWhileHovering( 1.1, .2 ) }
             className={ styles[ "cancel-button" ] }
             onClick={ handleClose }
           >
-            Annuler
+            Cancel
           </motion.button>
         </div>
       </div>
@@ -617,4 +478,4 @@ const AddCar = ( { handleClose, type = "new", car } ) => {
   );
 };
 
-export default AddCar;
+export default AddClothe;

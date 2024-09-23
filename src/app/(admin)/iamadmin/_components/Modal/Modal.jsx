@@ -9,10 +9,6 @@ const Modal = ( { children, handleClose, customClassName } ) => {
       opacity: 1,
       y: 0,
       scale: 1,
-      // transition: {
-      //   duration: .5,
-      //   type: "spring"
-      // }
     },
     hidden: {
       opacity: 0,

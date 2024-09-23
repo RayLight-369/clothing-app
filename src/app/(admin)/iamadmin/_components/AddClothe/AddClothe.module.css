@@ -1,4 +1,4 @@
-div.add-car {
+div.add-clothe {
   width: 60vw;
   height: fit-content;
   max-height: calc(100vh - 100px);
@@ -37,8 +37,8 @@ div.header button.close {
   width: 40px;
   height: 40px;
   text-align: center;
-  background: #e9f1ff;
-  color: #025883;
+  background: #e8e8e8;
+  color: #343434;
   cursor: pointer;
   font-size: 16px;
 }
@@ -58,6 +58,7 @@ div.inputs > * {
   padding: 4px 15px;
   font-family: abeezee;
   color: #343434;
+  background: none;
   font-family: 13px;
   border-bottom: 1.4px solid #c7c7c7;
   border-radius: 3px;
@@ -66,7 +67,7 @@ div.inputs > * {
 
 div.inputs > *:focus {
   transform: scale(1.06);
-  border-bottom-color: #025883;
+  border-bottom-color: #343434;
 }
 
 div.inputs > *::placeholder {
@@ -100,13 +101,13 @@ div.buttons button {
 }
 
 div.buttons button.add-button {
-  background: #025883;
+  background: #343434;
   color: white;
 }
 
 div.buttons button.cancel-button {
-  border: 1.2px solid #025883;
-  color: #025883;
+  border: 1.2px solid #343434;
+  color: #343434;
   background: none;
 }
 
@@ -140,11 +141,11 @@ div.infos > div input {
   border: none;
   outline: none;
   border-radius: 5px;
-  background: #e9f1ff;
+  background: #e8e8e8;
   height: 32px;
   /* width: 100px; */
   font-size: .805rem;
-  color: #025883;
+  color: #343434;
   padding: 0 14px;
 }
 
@@ -155,7 +156,7 @@ div.accessories {
   position: relative;
   top: 20px;
 
-  > label {
+  & > label {
     font-size: 1rem !important;
     font-weight: bold;
   }
@@ -167,12 +168,12 @@ div.content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: calc(60vw - 50px);
+}
 
-  div {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-  }
+div.content div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
 }
 
 div.images {
@@ -182,19 +183,6 @@ div.images {
   position: relative;
   width: 100%;
   top: 20px;
-
-  > p {
-    font-size: 1rem !important;
-    font-weight: bold;
-
-  }
-
-  > label {
-    border-radius: 4px;
-    padding: 8px 15px;
-    background: var(--soft-blue);
-    color: #fdfdfd !important;
-  }
 
   .img-container {
     display: flex;
@@ -216,7 +204,7 @@ div.images {
     height: 170px;
     width: 170px;
     object-fit: contain;
-    background: var(--bg-blue);
+    background: hsl(var(--muted-foreground));
     border-radius: 10px;
   }
 
@@ -241,8 +229,21 @@ div.images {
 
 }
 
+div.images > p {
+  font-size: 1rem !important;
+  font-weight: bold;
+
+}
+
+div.images > label {
+  border-radius: 4px;
+  padding: 8px 15px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground)) !important;
+}
+
 @media screen and (max-width: 768px) {
-  div.add-car {
+  div.add-clothe {
     width: 90vw;
     padding: 25px 30px;
     top: -20px !important;
@@ -262,7 +263,7 @@ div.images {
     outline: none;
     padding: 4px 12px !important;
     font-family: abeezee;
-    color: #343434;
+    color: hsl(var(--foreground));
     font-family: 13px;
     border-bottom: 1.4px solid #c7c7c7;
     border-radius: 3px;
@@ -301,11 +302,11 @@ div.images {
     border: none;
     outline: none;
     border-radius: 5px;
-    background: #e9f1ff;
+    background: #e8e8e8;
     height: 32px;
     /* width: 100px; */
     font-size: .805rem;
-    color: #025883;
+    color: #343434;
     padding: 0 14px;
   }
 
@@ -315,11 +316,12 @@ div.images {
     flex-direction: column;
     width: calc(100% - 10px);
 
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 13px;
-    }
+  }
+
+  div.content div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
   }
 }

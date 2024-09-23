@@ -1,11 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Styles from "./OptionBar.module.css";
 
 
-const OptionBar = ( { setAddBrandPopupOpen, setAddCarPopupOpen, setAddRatePopupOpen, setAddTruckPopupOpen } ) => {
+const OptionBar = ( { setAddClothePopupOpen } ) => {
 
   const [ openOptionBar, setOpenOptionBar ] = useState( false );
   const [ isMobile, setIsMobile ] = useState( false );
@@ -72,7 +72,7 @@ const OptionBar = ( { setAddBrandPopupOpen, setAddCarPopupOpen, setAddRatePopupO
       <motion.div className={ Styles[ "major-options" ] }>
         {/* <button type='button' className={ Styles[ 'major-options-btn' ] } onClick={ exportCSV }>+ Export CSV</button> */ }
 
-        <button type='button' className={ Styles[ 'major-options-btn' ] } onClick={ () => setAddCarPopupOpen( true ) }>+ Add New Clothe</button>
+        <button type='button' className={ Styles[ 'major-options-btn' ] } onClick={ () => setAddClothePopupOpen( true ) }>+ Add New Clothe</button>
         {/* <button type='button' className={ Styles[ 'major-options-btn' ] } onClick={ () => setAddTaskPopupOpen( true ) }>+ Add Task</button> */ }
         {/* <button type='button' className={ Styles[ 'major-options-btn' ] } onClick={ importCSV }>+ Import CSV</button> */ }
 
