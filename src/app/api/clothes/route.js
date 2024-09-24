@@ -82,7 +82,7 @@ export async function DELETE ( req ) {
       console.log( Data.error );
       return Response.json( { error: Data.error }, { status: Data.status } );
 
-    } else return Response.json( { data: Data.data || [ object ] }, { status: Data.status || 200 } );
+    } else return Response.json( { data: [ object ] }, { status: Data.status || 200 } );
 
   } catch ( e ) {
     console.log( e );
