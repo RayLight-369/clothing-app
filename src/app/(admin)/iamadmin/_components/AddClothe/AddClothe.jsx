@@ -8,6 +8,7 @@ import { v4 as uid } from "uuid";
 import { uploadFile, updateData, deleteFile } from "@/lib/supabase";
 import MultipleSelector from '../MultipleSelector';
 import MultiSelectDropdown from '../MultiSelectDropdown';
+import RichTextEditor from '../RichTextEditor';
 
 
 const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
@@ -17,6 +18,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
   const [ clotheID, setClotheID ] = useState( clothe?.id || 0 );
   const [ adding, setAdding ] = useState( false );
   const [ clotheTitle, setClotheTitle ] = useState( clothe?.title || "" );
+  const [ clotheDesc, setClotheDesc ] = useState( clothe?.desc || null );
   // const [ clotheOverview, setClotheOverview ] = useState( clothe?.overview || "" );
 
   const [ type, setType ] = useState( clothe?.type || "" );
@@ -305,7 +307,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
     const uploaded_at = dateParts.join( "-" );
 
     const ReqData = {
-      title: clotheTitle, uploaded_at, images, colors, price, sizes, type
+      title: clotheTitle, uploaded_at, images, colors, price, sizes, type, desc: clotheDesc
     };
 
 
@@ -386,6 +388,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
                 <input type="text" placeholder='Title' className={ styles[ "name" ] } value={ clotheTitle } onChange={ e => setClotheTitle( e.target.value ) } />
                 {/* <textarea placeholder='Aperçu de la voiture' className={ styles[ "description" ] } value={ clotheOverview } onChange={ e => setClotheOverview( e.target.value ) } /> */ }
               </div>
+              <RichTextEditor />
 
               <div className={ styles[ "infos" ] }>
 
