@@ -11,8 +11,7 @@ const styleMap = {
   },
 };
 
-const RichTextEditor = () => {
-  const [ editorState, setEditorState ] = useState( EditorState.createEmpty() );
+const RichTextEditor = ( { editorState, setEditorState } ) => {
 
   const handleStyleToggle = ( style ) => {
     setEditorState( RichUtils.toggleInlineStyle( editorState, style ) );

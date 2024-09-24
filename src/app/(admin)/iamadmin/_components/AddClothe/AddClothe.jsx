@@ -9,6 +9,7 @@ import { uploadFile, updateData, deleteFile } from "@/lib/supabase";
 import MultipleSelector from '../MultipleSelector';
 import MultiSelectDropdown from '../MultiSelectDropdown';
 import RichTextEditor from '../RichTextEditor';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 
 
 const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
@@ -18,7 +19,9 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
   const [ clotheID, setClotheID ] = useState( clothe?.id || 0 );
   const [ adding, setAdding ] = useState( false );
   const [ clotheTitle, setClotheTitle ] = useState( clothe?.title || "" );
-  const [ clotheDesc, setClotheDesc ] = useState( clothe?.desc || null );
+  // const [ clotheDesc, setClotheDesc ] = useState( clothe?.desc || null );
+  const [ editorState, setEditorState ] = useState( ( clothe?.desc && EditorState.createWithContent( convertFromRaw( clothe.desc ) ) ) || EditorState.createEmpty() );
+
   // const [ clotheOverview, setClotheOverview ] = useState( clothe?.overview || "" );
 
   const [ type, setType ] = useState( clothe?.type || "" );
@@ -307,7 +310,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
     const uploaded_at = dateParts.join( "-" );
 
     const ReqData = {
-      title: clotheTitle, uploaded_at, images, colors, price, sizes, type, desc: clotheDesc
+      title: clotheTitle, uploaded_at, images, colors, price, sizes, type, desc: convertToRaw( editorState.getCurrentContent() )
     };
 
 
@@ -388,7 +391,7 @@ const AddClothe = ( { handleClose, type_ = "new", clothe } ) => {
                 <input type="text" placeholder='Title' className={ styles[ "name" ] } value={ clotheTitle } onChange={ e => setClotheTitle( e.target.value ) } />
                 {/* <textarea placeholder='Aperçu de la voiture' className={ styles[ "description" ] } value={ clotheOverview } onChange={ e => setClotheOverview( e.target.value ) } /> */ }
               </div>
-              <RichTextEditor />
+              <RichTextEditor editorState={ editorState } setEditorState={ setEditorState } />
 
               <div className={ styles[ "infos" ] }>
 
