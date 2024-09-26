@@ -48,7 +48,7 @@ const page = () => {
           <h1 className='font-[Alata] text-xl'>Product Filter</h1>
 
         </div>
-        <div className='md:w-[calc(100vw-20vw)] float-left'>
+        <div className='md:w-[calc(100vw-20vw)] md:float-left'>
           <CardsContainer />
         </div>
       </div>
