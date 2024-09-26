@@ -47,8 +47,8 @@ export const metadata = {
 
 export default function RootLayout ( { children } ) {
   return (
-    <html lang="en" className="w-screen h-screen overflow-x-hidden">
-      <body className={ cn( "w-full h-full", inter.className ) }>
+    <html lang="en" className="w-screen h-fit overflow-x-hidden">
+      <body className={ cn( "w-full h-fit", inter.className ) }>
         <ThemeContext
           attribute="class"
           defaultTheme="system"
